@@ -22,7 +22,15 @@ public class Pin : MonoBehaviour {
        if (col.tag == "Rotator") //naming the collider TAG as the rotator 
         {
             transform.SetParent(col.transform);
+            //col.GetComponent<Rotator>().speed += 20f; every time the pin hits, the rotator goes faster 
+            //col.GetComponent<Rotator>().speed *= -1  rotator rotates the opposite way when a pin is stuck into the middle 
             isPinned = true; //when it is true, what happens?
+
+        } else if (col.tag == "Pin")
+        {
+            //end game 
+            // to test if the code above works: Debug.Log("you hit something");
+            FindObjectOfType<GameManager>().EndGame();
 
         }
     }
